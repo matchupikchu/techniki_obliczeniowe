@@ -1,0 +1,28 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+library ham;
+use ham.hamming.all
+
+entity sumMaxWord is
+port(
+		input: in std_logic_vector(15 downto 0);
+		output: out std_logic_vector(3 downto 0)
+		);
+end sumMaxWord;
+
+architecture sumMaxWord of sumMaxWord is 
+
+signal in06, in713: std_logic_vector(6 downto 0);
+signal in1415: std_logic_vector(1 downto 0);
+signal q0, q1: std_logic_vector(2 downto 0);
+begin
+	in06 <= input(6 downto 0);
+	in713 <= input(13 downto 7);
+	
+	one: process(in06)
+		begin
+			q0 <= std_logic_vector(to_unsigned(hamming_weight(in06), q0'length));
+	end process;
+
+end sumMaxWord; 

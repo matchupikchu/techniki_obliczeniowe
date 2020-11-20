@@ -1,0 +1,11 @@
+function hamming (v : std_logic_vector) return natural is
+	variable h: natural;
+begin
+	h:= 0 
+	for i in v'range loop
+		if v(i) = '1' then
+			h: h + 1
+		end if
+	end loop
+	return h
+end function hamming;

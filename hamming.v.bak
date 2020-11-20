@@ -1,0 +1,53 @@
+//library ieee;
+//use ieee.std_logic_1164.all;
+//use ieee.std_logic_unsigned.all;
+//
+//entity hamming is
+//	port (
+//			A: in std_logic_vector(15 downto 0);
+//			B: out std_logic_vector(15 downto 0);
+//			temp: buffer integer
+//			);
+//end hamming;
+//
+//architecture behavioral of hamming is
+//	begin
+//--		temp <= A(0) + A(1) + A(2) + A(3) + A(4) + A(5) + A(6) + A(7) + A(8) + A(9) + A(10) + A(11) + A(12) + A(13) + A(14) + A(15);
+//		B <= 8'd3;
+//end behavioral;
+
+//
+//module T02Sbox (
+//	input	wire	[3:0]	inData,
+//	output	wire	[3:0]	outData
+//	);
+//
+//assign outData = 	(inData == 4'd0) ? 4'd4 :
+//					(inData == 4'd1) ? 4'd3 :
+//					(inData == 4'd2) ? 4'd1 :
+//					(inData == 4'd3) ? 4'd6 :
+//					(inData == 4'd4) ? 4'd7 :
+//					(inData == 4'd5) ? 4'd2 :
+//					(inData == 4'd6) ? 4'd5 :
+//					(inData == 4'd7) ? 4'd0 :
+//					(inData == 4'd8) ? 4'd12 : 
+//					(inData == 4'd9) ? 4'd11 :
+//					(inData == 4'd10) ? 4'd9 :
+//					(inData == 4'd11) ? 4'd14 :
+//					(inData == 4'd12) ? 4'd15 :
+//					(inData == 4'd13) ? 4'd10 :
+//					(inData == 4'd14) ? 4'd13 : 4'd8;
+//
+//endmodule
+
+module hamming 
+integer i;
+(
+	input wire [15:0] inData,
+	output wire [4:0] outData
+	);
+	begin
+		for(i = 0; i < 15; i = i +1) begin
+			outData = outData + 4'd1;
+		end 
+end module

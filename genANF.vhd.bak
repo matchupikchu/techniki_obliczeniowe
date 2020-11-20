@@ -1,0 +1,17 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity genANF is port(
+							clk: std_logic;
+							reset: std_logic;
+							ANF: std_logic_vector(0 to 15)
+							);
+end genANF;
+
+architecture behavioral of genANF is
+begin
+
+nhalf: generate entity 
+	nh: five.five_bit_counter;
+
+end behavioral;
