@@ -3,9 +3,8 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 
 entity transeuntTriangle is
-	generic (N: integer := 4);
-	port(	ANF: in std_logic_vector((2 ** N) - 1 downto 0);
-			TT: out std_logic_vector((2 ** N) - 1 downto 0)
+	port(	ANF: in std_logic_vector(15 downto 0);
+			TT: out std_logic_vector(15 downto 0)
 		 );
 	end transeuntTriangle;
 	
@@ -13,46 +12,27 @@ architecture behavioral of transeuntTriangle is
 signal TT03, TT47, TT811, TT1215: std_logic_vector(3 downto 0);
 signal TT07, TT815: std_logic_vector(7 downto 0);
 	begin
-	
-	TT03(0) <= '1';--ANF(15 downto 12);
-	TT47(0) <= '1';--ANF(11 downto 8);
-	TT811(0) <= '1';--ANF(7 downto 4);
-	TT1215(0) <= '1';--ANF(3 downto 0);
-	
-	first: process(TT03(0)) 
-		begin
+
 			TT03(0) <= ANF(0);
 			TT03(1) <= ANF(0) xor ANF(1);
 			TT03(2) <= ANF(0) xor ANF(2);
 			TT03(3) <= TT03(1) xor ANF(2) xor ANF(3);
-	end process;
-	
-	second: process(TT47(0)) 
-		begin
+
 			TT47(0) <= ANF(4);
 			TT47(1) <= ANF(4) xor ANF(5);
 			TT47(2) <= ANF(4) xor ANF(6);
 			TT47(3) <= TT47(1) xor ANF(6) xor ANF(7);
-	end process;
-	
-	thirst: process(TT811(0))
-		begin
+
 			TT811(0) <= ANF(8);
 			TT811(1) <= ANF(8) xor ANF(9);
 			TT811(2) <= ANF(8) xor ANF(10);
 			TT811(3) <= TT811(1) xor ANF(10) xor ANF(11);
-		end process;
-	
-	fourth: process(TT1215(0))
-		begin
+
 			TT1215(0) <= ANF(12);
 			TT1215(1) <= ANF(12) xor ANF(13);
 			TT1215(2) <= ANF(12) xor ANF(14);
 			TT1215(3) <= TT1215(0) xor ANF(14) xor ANF(15);
-		end process;
-	
-	byte0: process(TT811(3))
-		begin
+
 			TT07(0) <= TT03(0);
 			TT07(1) <= TT03(1);
 			TT07(2) <= TT03(2);
@@ -61,10 +41,7 @@ signal TT07, TT815: std_logic_vector(7 downto 0);
 			TT07(5) <= TT03(1) xor TT47(1);
 			TT07(6) <= TT03(2) xor TT47(2);
 			TT07(7) <= TT03(3) xor TT47(3);
-		end process;
-		
-	byte1: process(TT1215(3))
-		begin
+
 			TT815(0) <= TT811(0);
 			TT815(1) <= TT811(1);
 			TT815(2) <= TT811(2);
@@ -73,10 +50,7 @@ signal TT07, TT815: std_logic_vector(7 downto 0);
 			TT815(5) <= TT811(1) xor TT1215(1);
 			TT815(6) <= TT811(2) xor TT1215(2);
 			TT815(7) <= TT811(3) xor TT1215(3);
-		end process;
 	
-	twoBytes: process(TT815(7))
-		begin
 			TT(0) <= TT07(0);
 			TT(1) <= TT07(1);
 			TT(2) <= TT07(2);
@@ -93,5 +67,4 @@ signal TT07, TT815: std_logic_vector(7 downto 0);
 			TT(13) <= TT07(5) xor TT815(5);
 			TT(14) <= TT07(6) xor TT815(6);
 			TT(15) <= TT07(7) xor TT815(7);
-		end process;
 end behavioral;
