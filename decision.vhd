@@ -16,7 +16,7 @@ end decision;
 architecture beh of decision is
 begin
 
-output <= ANF when((unsigned(weight) = 6 or unsigned(weight) = 10) and unsigned(distance) = 6)
+output <= ANF when((unsigned(weight) = 6 and unsigned(distance) = 6) or (unsigned(weight) = 10 and unsigned(distance) = 6))
 				  else x"0000";
 
 

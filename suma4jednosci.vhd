@@ -4,8 +4,6 @@ use IEEE.STD_LOGIC_1164.ALL;
 library full_adder;
 use full_adder.all;
 
-library adk;
-use adk.all;
 
 entity suma4Jednosci is 
 port(input: in std_logic_vector(3 downto 0);

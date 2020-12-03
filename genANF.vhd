@@ -4,11 +4,10 @@ library five;
 library six;
 
 entity genANF is 
-	generic (N: integer := 4);
 port(
-							clk: in std_logic;
-							reset: in std_logic;
-							ANF: out std_logic_vector((2 ** N) - 1 downto 0)
+		clk: in std_logic;
+		reset: in std_logic;
+		ANF: out std_logic_vector(15 downto 0)
 							);
 end genANF;
 
@@ -35,7 +34,7 @@ begin
 	ANF(9) <= nh(3);
 	ANF(10) <= nh(4);
 	ANF(11) <= '0';
-	ANF(12) <= '0';
+	ANF(12) <= nh(5);
 	ANF(13) <= '0';
 	ANF(14) <= '0';
 	ANF(15) <= '0';
